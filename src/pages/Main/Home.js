@@ -25,6 +25,7 @@ const Home = () => {
     ))
   }
 
+  
   if (products.length && (stock || brand.length)) {
     content = products
       .filter(product => {
