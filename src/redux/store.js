@@ -10,5 +10,5 @@ const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(cartCounter, thunk, logger))
 );
-
+ 
 export default store;
