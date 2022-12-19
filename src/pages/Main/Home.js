@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 import { toggleBrand, toggleStock } from "../../redux/actions/filterActions";
+import { loadProduct } from "../../redux/actions/productAction";
+import { loadProductData } from "../../redux/thunk/products/fetchProducts";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const filters = useSelector(state => state.filter.filters)
+  const products = useSelector(state => state.product.products)
   const { brand, stock } = filters
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch("https://moon-tech-server-odfw.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
-  }, []);
+    dispatch(loadProductData())
+  }, [dispatch]);
 
   const activeClass = "text-white  bg-indigo-500 border-white";
 
