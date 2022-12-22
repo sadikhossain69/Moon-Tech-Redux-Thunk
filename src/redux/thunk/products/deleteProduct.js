@@ -11,7 +11,7 @@ export const deleteProduct = id => {
         const data = await res.json()
         console.log(data);
         if (data.acknowledged) {
-            dispatch(removeProduct(id)) 
+            dispatch(removeProduct(id))  
         }
     }
 }
